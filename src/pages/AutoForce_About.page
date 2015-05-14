@@ -1,0 +1,24 @@
+<!-- 
+    show input form for user to select class/trigger
+    
+    author : kiwi
+-->
+<apex:page sidebar="false" showHeader="false" docType="html-5.0" standardStylesheets="false" >
+    
+<apex:composition template="AutoForce_Page_Template">
+    <apex:define name="body">
+
+    <div class="container">
+
+		<div class="jumbotron">
+			<h1>About AutoForce</h1>
+			<p>AutoForce is an web application which contains tools that can ease Salesforce task.</p>
+			<p>Current tools included showing code coverage and an immortal code editor.</p>			
+		</div>
+
+	</div>
+    
+    </apex:define>
+</apex:composition>
+    
+</apex:page>

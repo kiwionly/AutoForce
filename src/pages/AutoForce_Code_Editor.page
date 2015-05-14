@@ -1,0 +1,110 @@
+<!-- 
+    show input form for user to select class/trigger/page/component
+    
+    author : kiwi
+-->
+<apex:page sidebar="false" showHeader="false" docType="html-5.0" standardStylesheets="false" controller="AutoForce_Code_EditorController" action="{!load}">
+    
+    <apex:composition template="AutoForce_Page_Template">
+        <apex:define name="body">
+        
+    <div class="container-fluid">
+	
+		<div class="col-sm-offset-0">
+			<h4>{!name}</h4>
+		</div>
+			
+		<div class="">
+			press Ctrl + S to save<br />			
+			<span id="result"></span> time : <span id="time">{!use}</span> 									
+		</div>
+		
+		<div id="editor" class="col-sm-12"></div>
+	</div>
+	
+    </apex:define>
+	    
+    <apex:define name="style">
+
+<apex:includeScript value="{!URLFOR($Resource.AutoForce, 'js/jquery.base64.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.AutoForce, 'editor/ace.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.AutoForce, 'editor/ext-language_tools.js')}"/>
+<script>
+
+$(document).ready( function() {
+
+	$.base64.utf8encode = true;
+
+	var langTools = ace.require("ace/ext/language_tools");
+	
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/textmate");
+    document.getElementById('editor').style.fontSize='14px';
+    
+    editor.setOptions({
+    	enableBasicAutocompletion: true,
+    	enableLiveAutocompletion: false,
+    	enableSnippets: false
+    });
+           
+    editor.getSession().setMode("ace/mode/java");
+    
+    var type = '{!type}';
+    
+    if(type == "ApexPage")
+   		editor.getSession().setMode("ace/mode/xml");
+    else  if(type == "ApexComponent")
+   		editor.getSession().setMode("ace/mode/xml");    
+    else if(type == "ApexTrigger")
+   		editor.getSession().setMode("ace/mode/mysql");
+    
+    var code = $.base64.atob("{!code}", true);    
+    editor.setValue(code, 1);
+    
+    editor.commands.addCommand({
+        name: 'save',
+        bindKey: {win: 'Ctrl-S',  mac: 'Command-S'},
+        exec: function(editor) {
+            
+        	//send to server :)
+        	var code = editor.getValue();
+    		var type = "{!type}";
+    		var id = "{!id}";
+    		
+    		$('#result').text("send code to server...");
+    		
+    		Visualforce.remoting.Manager.invokeAction(
+                '{!$RemoteAction.AutoForce_Code_EditorController.compile}', type, code, id, '{!domain}',
+                   function(result, event)
+                   {
+                        console.log(result);
+                   
+                        var data = result;
+    
+                        var line = data.line;
+                        var msg = data.message;
+                    	var time = data.time;
+                	
+                		if(line >= 0)
+                		{
+                			editor.gotoLine(line);
+                			editor.setHighlightActiveLine(true);
+                		}
+                		        		
+                		$('#time').text(time);
+                		$('#result').text(msg);
+                });
+    	
+        	
+        },
+        
+        readOnly: true // false if this command should not apply in readOnly mode
+    });
+   
+});
+</script>
+
+    </apex:define>
+</apex:composition>
+    
+</apex:page>

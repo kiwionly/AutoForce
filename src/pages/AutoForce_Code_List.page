@@ -1,0 +1,55 @@
+<!-- 
+    show a list of apex class/trigger with code coverage.
+    
+    author : kiwi
+-->
+<apex:page sidebar="false" showHeader="false" docType="html-5.0" standardStylesheets="false" controller="AutoForce_Code_ListCodeController" action="{!load}" >
+    
+<apex:composition template="AutoForce_Page_Template">
+    <apex:define name="body">
+
+    <div class="container">
+    
+        <div class="col-sm-offset-0">
+            <h3>List Code</h3>
+        </div>
+        
+        <div class="col-sm-offset-0">
+            <h5>Time : {!use} milliseconds</h5>
+        </div>
+        
+        <div class="">
+            <table class="table table-bordered">
+            
+            <apex:repeat value="{!result}" var="code">
+            
+                <tr>
+                    <td>
+                        <a target="_blank" href="/apex/AutoForce_Code_Editor?type={!type}&id={!code.Id}&name={!code.name}">
+                            {!code.name}
+                        </a>
+                    </td>
+                    <td>
+						 <a href="{!domain}/{!code.id}" target="_blank">				    
+					   	 	open in salesforce
+					    </a> 
+					</td>
+					<apex:outputPanel rendered="{!type == 'ApexPage' }" >					
+						<td>
+							 <a href="{!domain}/apex/{!code.name}" target="_blank">				    
+						   	 	view page
+						    </a> 
+						</td>					
+					</apex:outputPanel>	
+                </tr>
+                
+            </apex:repeat>
+            
+            </table>
+        </div>
+    </div>
+    
+    </apex:define>
+</apex:composition>
+    
+</apex:page>

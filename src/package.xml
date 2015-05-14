@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>AutoForce_Code_Compiler</members>
+        <members>AutoForce_Code_EditorController</members>
+        <members>AutoForce_Code_ListCodeController</members>
+        <members>AutoForce_Code_WS</members>
+        <members>AutoForce_Constant</members>
+        <members>AutoForce_Page_Compiler</members>
+        <members>AutoForce_Page_QueryProcessor</members>
+        <members>AutoForce_QueryProcessor</members>
+        <members>AutoForce_Test_CodeCoverageReader</members>
+        <members>AutoForce_Test_CoverageController</members>
+        <members>AutoForce_Test_ListController</members>
+        <members>AutoForce_Test_QueryProcessor</members>
+        <members>AutoForce_Test_Record</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>AutoForce_About</members>
+        <members>AutoForce_Code_Editor</members>
+        <members>AutoForce_Code_Form</members>
+        <members>AutoForce_Code_List</members>
+        <members>AutoForce_Page_Template</members>
+        <members>AutoForce_Test_Form</members>
+        <members>AutoForce_Test_LineCoverage</members>
+        <members>AutoForce_Test_List</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>AutoForce</members>
+        <name>StaticResource</name>
+    </types>
+    <version>32.0</version>
+</Package>
