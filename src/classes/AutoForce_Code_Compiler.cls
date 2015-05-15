@@ -19,7 +19,7 @@ public class AutoForce_Code_Compiler
         
         apex.SessionHeader = session;
         
-        reader = new AutoForce_Page_Compiler(sessionId, server + AutoForce_Constant.TOOLING_SERVICE_URL_t);
+        reader = new AutoForce_Page_Compiler(sessionId, server + AutoForce_Constant.ENTERPISE_SERVICE_URL);
     }
     
 	public Map<String, String> compile(String clazz)
