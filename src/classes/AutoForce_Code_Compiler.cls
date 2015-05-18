@@ -18,6 +18,7 @@ public class AutoForce_Code_Compiler
         session.sessionId = sessionId;
         
         apex.SessionHeader = session;
+        apex.endpoint_x = server + AutoForce_Constant.APEX_SERVICE_URL; //override generate end point instance
         
         reader = new AutoForce_Page_Compiler(sessionId, server + AutoForce_Constant.ENTERPISE_SERVICE_URL);
     }
