@@ -11,7 +11,8 @@
     <div class="container-fluid">
     
         <div class="col-sm-offset-0">
-            <h3>Code Coverage for <span class="type">{!type}</span> <span class="name">{!name}</span> </h3> 
+            <h3>Code Coverage for <span class="type">{!type}</span> <span class="name">{!name}</span> </h3>
+            <a class="open" href="AutoForce_Code_Editor?id={!id}&type={!type}&name={!name}" target="_blank">open source code</a>
         </div>
                 
         <div class="col-sm-offset-0">
