@@ -18,7 +18,7 @@ public class AutoForce_Code_Compiler
         session.sessionId = sessionId;
         
         apex.SessionHeader = session;
-        apex.endpoint_x = server + AutoForce_Constant.APEX_SERVICE_URL; //override generate end point instance
+        apex.endpoint_x = server + AutoForce_Constant.APEX_SERVICE_URL;
         
         reader = new AutoForce_Page_Compiler(sessionId, server + AutoForce_Constant.ENTERPISE_SERVICE_URL);
     }
@@ -45,6 +45,7 @@ public class AutoForce_Code_Compiler
 			result.put('line', '' + compileClassResult.line);
 			result.put('time', ''+ use);
 			result.put('message', 'Successfully compile Class: ' + compileClassResult.id);
+			result.put('lastModified', ''+ DateTime.valueOf(system.now()));
 					
 			return result;			
 		} 
@@ -83,6 +84,7 @@ public class AutoForce_Code_Compiler
 			result.put('line', '' + compileClassResult.line);
 			result.put('time', ''+ use);
 			result.put('message', 'Successfully compile Class: ' + compileClassResult.id);
+			result.put('lastModified', ''+ DateTime.valueOf(system.now()));
 					
 			return result;			
 		} 
@@ -115,6 +117,7 @@ public class AutoForce_Code_Compiler
 			result.put('line', '-1');
 			result.put('time', ''+ use);
 			result.put('message', 'Successfully compile Page: ' + id);
+			result.put('lastModified', ''+ DateTime.valueOf(system.now()));
 					
 			return result;			
         }

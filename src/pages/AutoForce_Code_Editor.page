@@ -13,10 +13,16 @@
 		<div class="col-sm-offset-0">
 			<h4>{!name}</h4>
 		</div>
+		
+		<span class="checkbox" style="float: right;"> 
+	        <input type="checkbox" id="check" checked="checked"></input>Check Modified
+		</span>
 			
 		<div class="">
-			press Ctrl + S to save<br />			
-			<span id="result"></span> time : <span id="time">{!use}</span> 									
+			press Ctrl + S to save
+			<br />
+			<span id="result"></span> time : <span id="time">{!use}</span> 	
+			<input type="hidden" id="lastModified" value="{!last}" />
 		</div>
 		
 		<div id="editor" class="col-sm-12"></div>
@@ -74,7 +80,7 @@ $(document).ready( function() {
     		$('#result').text("send code to server...");
     		
     		Visualforce.remoting.Manager.invokeAction(
-                '{!$RemoteAction.AutoForce_Code_EditorController.compile}', type, code, id, '{!domain}',
+                '{!$RemoteAction.AutoForce_Code_EditorController.compile}', type, code, id, '{!domain}', $('#lastModified').val(), $('#check').is(':checked'),
                    function(result, event)
                    {
                         console.log(result);
@@ -84,6 +90,7 @@ $(document).ready( function() {
                         var line = data.line;
                         var msg = data.message;
                     	var time = data.time;
+                    	var lastModified = data.lastModified;
                 	
                 		if(line >= 0)
                 		{
@@ -93,6 +100,8 @@ $(document).ready( function() {
                 		        		
                 		$('#time').text(time);
                 		$('#result').text(msg);
+                		$('#lastModified').val(lastModified);
+                		
                 });
     	
         	
