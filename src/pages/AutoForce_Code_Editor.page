@@ -100,7 +100,9 @@ $(document).ready( function() {
                 		        		
                 		$('#time').text(time);
                 		$('#result').text(msg);
-                		$('#lastModified').val(lastModified);
+                		
+                		if(lastModified != null)
+                		    $('#lastModified').val(lastModified);
                 		
                 });
     	
