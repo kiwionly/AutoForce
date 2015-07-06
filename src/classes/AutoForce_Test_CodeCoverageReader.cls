@@ -25,7 +25,7 @@ public class AutoForce_Test_CodeCoverageReader
     {                   
         List<TypeInfo> typeList;
         
-        typeList = getClazzList(filter, 'ApexClass');
+        typeList = getClazzList(filter, type);
             
         if(typeList.isEmpty())
             return new List<TestResult>();
