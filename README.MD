@@ -10,6 +10,6 @@ immortal code editor, which is an enhance version of Salesforce web IDE editor :
 test code coverage : let you see the whole class coverage instead of of 1 in developer console. (which Salesforce have no longer supported)
 
 #install
-Add Your instance url to remote settings.
+Add Your instance url to remote settings. (no longer need if you using winter 16 release)
 
 login to your instance, go to https://your-instance/apex/AutoForce_About
